@@ -1,7 +1,10 @@
 package com.example.sander.sander_pset2;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -9,5 +12,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    /*
+        Send user to second activity when button is clicked
+     */
+    public void goToSecond(View view) {
+
+        EditText intentText = (EditText) findViewById(R.id.intentText);
+        String text = intentText.getText().toString();
+
+        Intent intent = new Intent(this, SecondActivity.class);
+        intent.putExtra("ourText", text);
+
+        startActivity(intent);
+        finish();
     }
 }
