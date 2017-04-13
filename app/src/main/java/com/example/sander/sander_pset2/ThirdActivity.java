@@ -3,6 +3,7 @@ package com.example.sander.sander_pset2;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 public class ThirdActivity extends AppCompatActivity {
@@ -14,10 +15,17 @@ public class ThirdActivity extends AppCompatActivity {
 
         // process received intent
         Intent intent = getIntent();
-        String receivedText = intent.getStringExtra("ourText");
+        String receivedText = intent.getStringExtra("story");
 
         // edit textView based on received intent
-        TextView textView2 = (TextView) findViewById(R.id.textView2);
-        textView2.setText(receivedText);
+        TextView storyView = (TextView) findViewById(R.id.storyView);
+        storyView.setText(receivedText);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Log.d("back pressed", "back pressed");
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

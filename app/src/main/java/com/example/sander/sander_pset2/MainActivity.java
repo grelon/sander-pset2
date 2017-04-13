@@ -18,13 +18,7 @@ public class MainActivity extends AppCompatActivity {
         Send user to second activity when button is clicked
      */
     public void goToSecond(View view) {
-
-        EditText intentText = (EditText) findViewById(R.id.intentText);
-        String text = intentText.getText().toString();
-
         Intent intent = new Intent(this, SecondActivity.class);
-        intent.putExtra("ourText", text);
-
         startActivity(intent);
         finish();
     }

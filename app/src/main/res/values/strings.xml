@@ -2,6 +2,8 @@
     <string name="app_name">sander-pset2</string>
     <string name="welcome">Welcome to Madlibs</string>
     <string name="start_button">Submit</string>
-    <string name="welcomeSecond">Glad you made it</string>
+    <string name="welcomeSecond">Fill in the words to complete the story</string>
     <string name="ourText">Whatever the f you want</string>
+    <string name="input_prepend">Fill in a </string>
+    <string name="submit">Submit</string>
 </resources>

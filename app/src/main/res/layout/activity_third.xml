@@ -6,4 +6,14 @@
     android:layout_height="match_parent"
     tools:context="com.example.sander.sander_pset2.ThirdActivity">
 
+    <TextView
+        android:id="@+id/storyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteY="108dp" />
 </android.support.constraint.ConstraintLayout>

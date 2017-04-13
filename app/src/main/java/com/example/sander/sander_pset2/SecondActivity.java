@@ -3,29 +3,68 @@ package com.example.sander.sander_pset2;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import static com.example.sander.sander_pset2.R.id.textView2;
+import java.io.InputStream;
 
 public class SecondActivity extends AppCompatActivity {
 
-    @Override
+    Story story;
+    EditText editText;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        // while placeholder are not filled in
-            // prepare text from input
-            EditText intentText = (EditText) findViewById(R.id.intentText);
-            String text = intentText.getText().toString();
+        Log.d("Activity", "SetContentView");
 
-            // submit text to input text array
-            // button
+        // construct story
+        InputStream inputStream = this.getResources().openRawResource(R.raw.madlib0_simple);
+        story = new Story(inputStream);
 
-        // wrap input text array in intent and send it to Third Activity
+        // set editText view
+        editText = (EditText) findViewById(R.id.editText);
+
+        Log.d("Story", "constructed and read in");
+        // set initial hint to first placeholder
+        editText.setHint(story.getNextPlaceholder());
+    }
+
+    public void fillIn(View view) {
+    // when the submit button is clicked
+
+        Log.d("editText", "constructed");
+        String word = editText.getText().toString();
+        Log.d("editText", "stored in word");
+
+        // fill in next placeholder
+        story.fillInPlaceholder(word);
+        Log.d("Story", "fillInPlaceholder");
+
+        // clear editText and set nextPlaceholder as a hint
+        editText.setText("");
+        editText.setHint(story.getNextPlaceholder());
+
+        Log.d("before", "goToThird()");
+        if (story.getPlaceholderRemainingCount() == 0) {
+            goToThird();
+        }
+        Log.d("after", "goToThird()");
+    }
+
+    public void goToThird() {
+    // send user to third activity
+
         Intent intent = new Intent(this, ThirdActivity.class);
-        intent.putExtra("ourText", text);
 
+        // wrap story into the intent
+        intent.putExtra("story", story.toString());
+
+        // start third activity and tie up loose ends
+        startActivity(intent);
+        finish();
     }
 }
