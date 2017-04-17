@@ -1,11 +1,13 @@
 package com.example.sander.sander_pset2;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.io.InputStream;
 
@@ -13,6 +15,7 @@ public class SecondActivity extends AppCompatActivity {
 
     Story story;
     EditText editText;
+    TextView textCountRemaining;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +25,7 @@ public class SecondActivity extends AppCompatActivity {
         Log.d("Activity", "SetContentView");
 
         // construct story
-        InputStream inputStream = this.getResources().openRawResource(R.raw.madlib0_simple);
+        InputStream inputStream = this.getResources().openRawResource(R.raw.madlib1_tarzan);
         story = new Story(inputStream);
 
         // set editText view
@@ -31,6 +34,10 @@ public class SecondActivity extends AppCompatActivity {
         Log.d("Story", "constructed and read in");
         // set initial hint to first placeholder
         editText.setHint(story.getNextPlaceholder());
+
+        // set initial remaining placeholder count
+        textCountRemaining = (TextView) findViewById(R.id.textCountRemaining);
+        wordsRemaining();
     }
 
     public void fillIn(View view) {
@@ -47,6 +54,9 @@ public class SecondActivity extends AppCompatActivity {
         // clear editText and set nextPlaceholder as a hint
         editText.setText("");
         editText.setHint(story.getNextPlaceholder());
+
+        // update remaining words counter
+        wordsRemaining();
 
         Log.d("before", "goToThird()");
         if (story.getPlaceholderRemainingCount() == 0) {
@@ -66,5 +76,10 @@ public class SecondActivity extends AppCompatActivity {
         // start third activity and tie up loose ends
         startActivity(intent);
         finish();
+    }
+
+    public void wordsRemaining() {
+        textCountRemaining.setText(getResources().getQuantityString(R.plurals.words_remaining,
+                story.getPlaceholderRemainingCount(), story.getPlaceholderRemainingCount()));
     }
 }

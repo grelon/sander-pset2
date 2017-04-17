@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 public class ThirdActivity extends AppCompatActivity {
@@ -24,8 +25,17 @@ public class ThirdActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Log.d("back pressed", "back pressed");
+        // send user back to MainActivity when back is pressed
+        toMain();
+    }
+
+    public void anotherStory(View view) {
+        toMain();
+    }
+
+    public void toMain() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 }
