@@ -15,7 +15,6 @@
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/editText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
@@ -25,8 +24,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:hint="@string/placeholder"
         app:layout_constraintTop_toBottomOf="@id/textView2"
-        app:layout_constraintBottom_toTopOf="@id/textCountRemaining"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -36,9 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="10sp"
         android:gravity="center"
-        android:text=""
+        android:text="@string/placeholder"
         app:layout_constraintTop_toBottomOf="@id/editText"
-        app:layout_constraintBottom_toTopOf="@id/button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -52,7 +50,10 @@
         app:layout_constraintTop_toBottomOf="@id/textCountRemaining"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteX="123dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="32dp" />
 
 
 </android.support.constraint.ConstraintLayout>
