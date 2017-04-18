@@ -22,11 +22,17 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
+        if (savedInstanceState != null) {
+            story = (Story) savedInstanceState.getSerializable("story");
+        }
+
         Log.d("Activity", "SetContentView");
 
-        // construct story
-        InputStream inputStream = this.getResources().openRawResource(R.raw.madlib1_tarzan);
-        story = new Story(inputStream);
+        if (savedInstanceState == null) {
+            // construct story
+            InputStream inputStream = this.getResources().openRawResource(R.raw.madlib1_tarzan);
+            story = new Story(inputStream);
+        }
 
         // set editText view
         editText = (EditText) findViewById(R.id.editText);
@@ -81,5 +87,11 @@ public class SecondActivity extends AppCompatActivity {
     public void wordsRemaining() {
         textCountRemaining.setText(getResources().getQuantityString(R.plurals.words_remaining,
                 story.getPlaceholderRemainingCount(), story.getPlaceholderRemainingCount()));
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outstate) {
+        super.onSaveInstanceState(outstate);
+        outstate.putSerializable("story", story);
     }
 }

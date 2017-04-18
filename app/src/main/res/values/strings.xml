@@ -7,6 +7,8 @@
         that\'s part of the fun.
     </string>
     <string name="start_button">Let\'s start</string>
+    <string name="welcome3">Your Madlib story</string>
+    <string name="anotherStory">create another story</string>
     <string name="welcomeSecond">Fill in the words to complete the story</string>
     <string name="ourText">Whatever the f you want</string>
     <string name="input_prepend">Fill in a </string>
@@ -15,7 +17,6 @@
         <item quantity="other">%d more words to fill in</item>
     </plurals>
     <string name="submit">Submit</string>
-    <string name="welcome3">Your Madlib story</string>
-    <string name="anotherStory">create another story</string>
+
     <string name="placeholder">placeholder</string>
 </resources>
